@@ -1,7 +1,7 @@
 (function(){
   const FALLBACK = 'assets/fallback-equipo.svg';
-  const PHONE = '524421791079';
-  const PHONE_DISPLAY = '442 179 1079';
+  const PHONE = '524421544517';
+  const PHONE_DISPLAY = '442 154 4517';
   const PHONE_2_DISPLAY = '';
   const COVERAGE = ['Querétaro','Guanajuato','Aguascalientes','Jalisco','San Luis Potosí','Zacatecas','Estado de México','CDMX'];
 

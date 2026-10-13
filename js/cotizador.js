@@ -1,6 +1,6 @@
 (function(){
   if(!window.EQUIPOS)return;
-  const PHONE='524421791079';
+  const PHONE='524421544517';
   const CHAT_KEY='gtmx-chat-prefill-v9';
   const QUOTE_DRAFT='gtmx-cotizacion-manual-v9';
   const INFO_DRAFT='gtmx-informes-manual-v9';
@@ -164,7 +164,7 @@
     const niceDate=v=>{if(!v)return 'Por definir';const [yy,mm,dd]=String(v).split('-');return yy&&mm&&dd?`${dd}/${mm}/${yy}`:v};
     const ensureSpace=(needed=18)=>{if(y+needed>276){pdf.addPage();y=22}};
     pdf.setFillColor(9,31,54);pdf.rect(0,0,210,48,'F');const logo=window.GDB_LOGO_DATA_URL;if(logo){pdf.setFillColor(255,255,255);pdf.roundedRect(10,6,40,34,3,3,'F');try{pdf.addImage(logo,'PNG',13,8.5,34,27.3,undefined,'FAST')}catch(e){}}
-    pdf.setFont('helvetica','bold');pdf.setFontSize(18);pdf.setTextColor(255,255,255);pdf.text('SOLICITUD DE COTIZACIÓN',56,17);pdf.setFontSize(10);pdf.setTextColor(255,204,0);pdf.text('GRÚAS TELESCÓPICAS',56,24);pdf.setTextColor(255,255,255);pdf.setFont('helvetica','normal');pdf.setFontSize(9);pdf.text(`Folio ${f}`,56,31);pdf.text(`Emisión ${new Date().toLocaleDateString('es-MX')}`,56,36);pdf.text('WhatsApp / Tel. 442 179 1079',56,41);
+    pdf.setFont('helvetica','bold');pdf.setFontSize(18);pdf.setTextColor(255,255,255);pdf.text('SOLICITUD DE COTIZACIÓN',56,17);pdf.setFontSize(10);pdf.setTextColor(255,204,0);pdf.text('GRÚAS TELESCÓPICAS',56,24);pdf.setTextColor(255,255,255);pdf.setFont('helvetica','normal');pdf.setFontSize(9);pdf.text(`Folio ${f}`,56,31);pdf.text(`Emisión ${new Date().toLocaleDateString('es-MX')}`,56,36);pdf.text('WhatsApp / Tel. 442 154 4517',56,41);
     const section=t=>{ensureSpace(16);pdf.setFillColor(244,246,248);pdf.roundedRect(margin,y-5,180,10,2,2,'F');pdf.setTextColor(9,31,54);pdf.setFont('helvetica','bold');pdf.setFontSize(11);pdf.text(t,margin+4,y+1);y+=11};
     const row=(a,b)=>{ensureSpace(12);pdf.setFont('helvetica','bold');pdf.setFontSize(8.8);pdf.setTextColor(71,82,93);pdf.text(a,margin,y);pdf.setFont('helvetica','normal');pdf.setTextColor(17,24,32);const lines=pdf.splitTextToSize(String(b||'Por definir'),110);pdf.text(lines,78,y);y+=Math.max(7,lines.length*4.3+2);pdf.setDrawColor(232,235,239);pdf.line(margin,y-2,195,y-2)};
     const amountRow=(label,value,strong=false)=>{ensureSpace(9);pdf.setFont('helvetica',strong?'bold':'normal');pdf.setFontSize(strong?11:9.5);pdf.setTextColor(17,24,32);pdf.text(label,118,y);pdf.text(value,195,y,{align:'right'});y+=7};
@@ -179,7 +179,7 @@
     pdf.setFont('helvetica','normal');pdf.setFontSize(8.5);pdf.setTextColor(71,82,93);pdf.text('Los importes se determinan después de revisar disponibilidad, capacidad, radio, accesos, duración y condiciones reales del servicio.',margin,y,{maxWidth:178});y+=12;
     amountRow('Subtotal','Por confirmar');amountRow('IVA','Por confirmar');pdf.setDrawColor(9,31,54);pdf.line(118,y-2,195,y-2);amountRow('TOTAL','Por confirmar',true);
     ensureSpace(35);y+=2;pdf.setFillColor(255,248,224);pdf.roundedRect(margin,y,180,27,2,2,'F');pdf.setTextColor(120,77,0);pdf.setFont('helvetica','bold');pdf.setFontSize(9);pdf.text('Condiciones de la solicitud',margin+4,y+6);pdf.setFont('helvetica','normal');pdf.setFontSize(8);const note=pdf.splitTextToSize('Documento generado con la información proporcionada por el cliente. No representa confirmación de disponibilidad ni precio final. La cotización económica se emite después de la revisión técnica y comercial del proyecto.',172);pdf.text(note,margin+4,y+12);y+=31;
-    const pages=pdf.getNumberOfPages();for(let p=1;p<=pages;p++){pdf.setPage(p);pdf.setDrawColor(225,228,232);pdf.line(15,283,195,283);pdf.setTextColor(90,98,108);pdf.setFont('helvetica','normal');pdf.setFontSize(7.5);pdf.text('Grúas Telescópicas · 442 179 1079 · Querétaro y Bajío',15,289);pdf.text(`Página ${p} de ${pages}`,195,289,{align:'right'})}
+    const pages=pdf.getNumberOfPages();for(let p=1;p<=pages;p++){pdf.setPage(p);pdf.setDrawColor(225,228,232);pdf.line(15,283,195,283);pdf.setTextColor(90,98,108);pdf.setFont('helvetica','normal');pdf.setFontSize(7.5);pdf.text('Grúas Telescópicas · 442 154 4517 · Querétaro y Bajío',15,289);pdf.text(`Página ${p} de ${pages}`,195,289,{align:'right'})}
     pdf.save(`Solicitud_Cotizacion_${f}.pdf`);toast('PDF generado correctamente');
   }
   function toast(t){let el=document.querySelector('.toast');if(!el){el=document.createElement('div');el.className='toast';document.body.appendChild(el)}el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2400)}
