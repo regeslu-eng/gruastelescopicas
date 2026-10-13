@@ -511,3 +511,7 @@ section[id]{scroll-margin-top:104px}
   .hero-photo-card{min-height:280px;margin-bottom:30px}
   .nav-links{max-height:calc(100vh - 80px)}
 }
+
+
+/* ===== SEO / IA: preguntas frecuentes y entidad local ===== */
+.ai-faq-section{background:#f7f8fa}.ai-faq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:30px}.ai-faq-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 10px 28px rgba(17,24,32,.04)}.ai-faq-card h3{font-size:1.08rem;margin:0 0 10px;color:var(--ink)}.ai-faq-card p{margin:0;font-size:.92rem;line-height:1.65}.ai-faq-cta{margin-top:22px;background:var(--ink);color:#fff;border-radius:20px;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}.ai-faq-cta strong{font-size:1rem}.ai-faq-cta .btn{flex:0 0 auto}@media(max-width:760px){.ai-faq-grid{grid-template-columns:1fr}.ai-faq-card{padding:20px}.ai-faq-cta{align-items:stretch;flex-direction:column}.ai-faq-cta .btn{width:100%}}

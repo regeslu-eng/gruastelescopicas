@@ -1,0 +1,21 @@
+BING / MICROSOFT - CONFIGURACION EXTERNA
+
+Este proyecto conserva la verificacion actual de Google Search Console.
+
+1. Bing Webmaster Tools
+   - Agregar/importar https://www.rentadegruastelescopicas.com/ desde Google Search Console.
+   - Enviar sitemap: https://www.rentadegruastelescopicas.com/sitemap-google.xml
+   - Revisar URL Inspection, Search Performance y AI Performance.
+
+2. Bing Places
+   - Registrar Grúas Telescópicas.
+   - Ubicacion inicial: Santiago de Querétaro, Querétaro.
+   - Telefono: 442 154 4517.
+   - Sitio: https://www.rentadegruastelescopicas.com/
+   - Mantener los mismos datos que Google, Facebook e Instagram.
+
+3. IndexNow
+   - Activarlo desde Bing Webmaster Tools o mediante una integracion compatible.
+   - No se incluyo una clave falsa o de ejemplo dentro del sitio.
+
+No borrar ni sustituir la etiqueta google-site-verification existente.
