@@ -1,7 +1,8 @@
 (function(){
   const FALLBACK = 'assets/fallback-equipo.svg';
-  const PHONE = '524421544517';
-  const PHONE_DISPLAY = '442 154 4517';
+  const PHONE = '524421791079';
+  const PHONE_DISPLAY = '442 179 1079';
+  const EMAIL = 'gruastelescopicas27@gmail.com';
   const PHONE_2_DISPLAY = '';
   const COVERAGE = ['Querétaro','Guanajuato','Aguascalientes','Jalisco','San Luis Potosí','Zacatecas','Estado de México','CDMX'];
 
@@ -186,7 +187,8 @@
       if(/urgente|hoy|mañana|pronto|24|48/.test(text))return urgencyFlow();
       if(/cobertura|municipio|ciudad|estado|zona/.test(text))return coverageFlow();
       if(/montacargas|grua|grúa|plataforma|retro|lowboy|hiab|titan|titán|andamio|bobcat/.test(text))return answerEquipmentKeyword(text);
-      if(/telefono|teléfono|llamar|contacto|correo|email|whatsapp/.test(text)){addBubble(`Puedes llamar o escribir por WhatsApp al ${PHONE_DISPLAY}.`);finishOptions();return}
+      if(/correo|email/.test(text)){addBubble(`Nuestro correo es ${EMAIL}.`);addBubble(`${linkButton('Enviar correo',`mailto:${EMAIL}`,'secondary')}`,'bot',true);finishOptions();return}
+      if(/telefono|teléfono|llamar|contacto|whatsapp/.test(text)){addBubble(`Puedes llamar o escribir por WhatsApp al ${PHONE_DISPLAY}.`);addBubble(`${linkButton('Llamar',`tel:+52${PHONE_DISPLAY.replace(/\D/g,'')}`,'secondary')}${linkButton('WhatsApp',wa('Hola, quiero informes sobre sus servicios.'),'wa')}`,'bot',true);finishOptions();return}
       if(/catalogo|catálogo|productos|equipos/.test(text)){addBubble('El catálogo integra las familias y variantes disponibles de grúas, plataformas, montacargas, maquinaria, transporte y equipo de apoyo. Puedes buscar por equipo o por tipo de trabajo.');addBubble(`${linkButton('Ver catálogo','catalogo.html','secondary')}${linkButton('Cotizar','cotizador.html?modo=cotizacion')}`,'bot',true);finishOptions();return}
       if(/horario|disponib/.test(text)){addBubble('La disponibilidad depende del equipo, municipio y fecha. Para servicios cercanos conviene consultar en cuanto antes porque la agenda puede cambiar durante el día.');addBubble(`${linkButton('Consultar disponibilidad',wa('Hola, quiero consultar disponibilidad para un servicio.'),'wa')}${linkButton('Cotizar','cotizador.html?modo=cotizacion')}`,'bot',true);finishOptions();return}
       addBubble('Puedo orientarte con equipos, cobertura, disponibilidad, informes o una cotización. Si me dices qué necesitas hacer, te guío paso a paso.');start(false);
