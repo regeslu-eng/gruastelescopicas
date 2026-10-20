@@ -80,7 +80,7 @@
   }
 
   const quickForm=document.querySelector('#quick-contact');
-  if(quickForm){quickForm.addEventListener('submit',e=>{e.preventDefault();const f=new FormData(quickForm);const msg=`Hola, necesito cotizar ${f.get('servicio')} para una maniobra. Favor de confirmar disponibilidad nacional.\nNombre: ${f.get('nombre')}\nTeléfono: ${f.get('telefono')}\nServicio: ${f.get('servicio')}\nCiudad: ${f.get('ciudad')}`;window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`,'_blank','noopener');});}
+  if(quickForm){quickForm.addEventListener('submit',e=>{e.preventDefault();window.gtAdsConversion&&window.gtAdsConversion('formulario_rapido');const f=new FormData(quickForm);const msg=`Hola, necesito cotizar ${f.get('servicio')} para una maniobra. Favor de confirmar disponibilidad nacional.\nNombre: ${f.get('nombre')}\nTeléfono: ${f.get('telefono')}\nServicio: ${f.get('servicio')}\nCiudad: ${f.get('ciudad')}`;window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`,'_blank','noopener');});}
 
   document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href');if(id&&id.length>1){const t=document.querySelector(id);if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}}}));
 
