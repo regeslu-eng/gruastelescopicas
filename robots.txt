@@ -10,4 +10,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://www.rentadegruastelescopicas.com/sitemap-google.xml
+Sitemap: https://www.rentadegruastelescopicas.com/sitemap.xml

@@ -27,6 +27,30 @@
     'Zacatecas':['Zacatecas','Guadalupe','Fresnillo','Jerez','Calera','Ojocaliente','Loreto','Sombrerete','Río Grande','Nochistlán de Mejía','Otra ciudad / municipio'],
     'Estado de México':['Toluca','Tlalnepantla de Baz','Naucalpan de Juárez','Cuautitlán Izcalli','Tepotzotlán','Tultitlán','Ecatepec de Morelos','Atizapán de Zaragoza','Lerma','Metepec','Huixquilucan','Nicolás Romero','Chalco','Ixtapaluca','Texcoco','Otra ciudad / municipio'],
     'CDMX':['Álvaro Obregón','Azcapotzalco','Benito Juárez','Coyoacán','Cuajimalpa de Morelos','Cuauhtémoc','Gustavo A. Madero','Iztacalco','Iztapalapa','La Magdalena Contreras','Miguel Hidalgo','Milpa Alta','Tláhuac','Tlalpan','Venustiano Carranza','Xochimilco'],
+    'Baja California':['Otra ciudad / municipio'],
+    'Baja California Sur':['Otra ciudad / municipio'],
+    'Campeche':['Otra ciudad / municipio'],
+    'Chiapas':['Otra ciudad / municipio'],
+    'Chihuahua':['Otra ciudad / municipio'],
+    'Coahuila':['Otra ciudad / municipio'],
+    'Colima':['Otra ciudad / municipio'],
+    'Durango':['Otra ciudad / municipio'],
+    'Guerrero':['Otra ciudad / municipio'],
+    'Hidalgo':['Otra ciudad / municipio'],
+    'Michoacán':['Otra ciudad / municipio'],
+    'Morelos':['Otra ciudad / municipio'],
+    'Nayarit':['Otra ciudad / municipio'],
+    'Nuevo León':['Otra ciudad / municipio'],
+    'Oaxaca':['Otra ciudad / municipio'],
+    'Puebla':['Otra ciudad / municipio'],
+    'Quintana Roo':['Otra ciudad / municipio'],
+    'Sinaloa':['Otra ciudad / municipio'],
+    'Sonora':['Otra ciudad / municipio'],
+    'Tabasco':['Otra ciudad / municipio'],
+    'Tamaulipas':['Otra ciudad / municipio'],
+    'Tlaxcala':['Otra ciudad / municipio'],
+    'Veracruz':['Otra ciudad / municipio'],
+    'Yucatán':['Otra ciudad / municipio'],
     'Otro':['Otra ciudad / municipio']
   };
   const STATES=Object.keys(LOCATIONS);
@@ -76,7 +100,7 @@
     e.preventDefault();if(!infoForm.reportValidity())return;
     const d=Object.fromEntries(new FormData(infoForm).entries());if(!validPhone(d.telefono)){alert('Ingresa un teléfono de al menos 10 dígitos.');infoForm.elements.telefono.focus();return}
     const label=NEEDS[d.servicio]?.label||d.servicio;
-    const msg=['Hola, quiero pedir informes sobre sus servicios.','',`Servicio / necesidad: ${label}`,`Ubicación: ${infoCityValue()}, ${d.estado}`,`Nombre: ${d.nombre}`,`Teléfono: ${d.telefono}`,`Pregunta: ${d.mensaje||'Quiero que me orienten sobre la mejor opción.'}`].join('\n');
+    const msg=['Hola, necesito informes para mi proyecto. ¿Me ayudan a revisar disponibilidad nacional según ubicación y fecha?','',`Servicio / necesidad: ${label}`,`Ubicación: ${infoCityValue()}, ${d.estado}`,`Nombre: ${d.nombre}`,`Teléfono: ${d.telefono}`,`Pregunta: ${d.mensaje||'Quiero que me orienten sobre la mejor opción.'}`].join('\n');
     window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`,'_blank','noopener');
   });
 
@@ -154,7 +178,7 @@
   function summary(){const d=formData(),cfg=NEEDS[d.necesidad],it=window.EQUIPOS.find(x=>x.id===d.equipo);document.querySelector('#sum-necesidad').textContent=cfg?.label||'Por seleccionar';document.querySelector('#sum-equipo').textContent=it?`${it.nombre}${d.variante?' · '+d.variante:''}`:'Por seleccionar';document.querySelector('#sum-proyecto').textContent=d.proyecto||'Por definir';document.querySelector('#sum-ubicacion').textContent=d.ciudad_final?`${d.ciudad_final}${d.estado?', '+d.estado:''}`:(d.estado||'Por definir');document.querySelector('#sum-fecha').textContent=d.fecha||'Por definir'}
   function ensureValid(){const invalid=form.querySelector(':invalid');if(!invalid)return true;const n=Number(invalid.closest('.wizard-panel')?.dataset.step||1);showStep(n);invalid.reportValidity();invalid.focus();return false}
   function folio(){if(ACTIVE_FOLIO)return ACTIVE_FOLIO;const n=new Date(),z=x=>String(x).padStart(2,'0');ACTIVE_FOLIO=`GTMX-${String(n.getFullYear()).slice(-2)}${z(n.getMonth()+1)}${z(n.getDate())}-${z(n.getHours())}${z(n.getMinutes())}`;const el=document.querySelector('#sum-folio');if(el)el.textContent=ACTIVE_FOLIO;return ACTIVE_FOLIO}
-  function quoteMessage(){const d=formData(),cfg=NEEDS[d.necesidad],it=window.EQUIPOS.find(x=>x.id===d.equipo),f=folio();return ['Hola, quiero solicitar una cotización.',`Folio: ${f}`,'',`Trabajo: ${cfg?.label||'Por definir'}`,`Equipo: ${it?.nombre||'Necesito asesoría'}${d.variante?' · '+d.variante:''}`,`Proyecto: ${d.proyecto}`,`Ubicación: ${d.ciudad_final}, ${d.estado}`,`Fecha: ${d.fecha}`,`Duración: ${d.duracion}`,`Peso: ${d.peso||'Por confirmar'}`,`Altura: ${d.altura||'Por confirmar'}`,`Maniobra: ${d.maniobra||'Sin descripción adicional'}`,'',`Nombre: ${d.nombre}`,`Teléfono: ${d.telefono}`,`Empresa: ${d.empresa||'N/A'}`,`Correo: ${d.email||'N/A'}`,`Comentarios: ${d.notas||'Sin comentarios adicionales'}`].join('\n')}
+  function quoteMessage(){const d=formData(),cfg=NEEDS[d.necesidad],it=window.EQUIPOS.find(x=>x.id===d.equipo),f=folio();return ['Hola, necesito una cotización de renta de grúas / maquinaria para mi proyecto. Favor de confirmar disponibilidad en la ubicación y fecha solicitadas.',`Folio: ${f}`,'',`Trabajo: ${cfg?.label||'Por definir'}`,`Equipo: ${it?.nombre||'Necesito asesoría'}${d.variante?' · '+d.variante:''}`,`Proyecto: ${d.proyecto}`,`Ubicación: ${d.ciudad_final}, ${d.estado}`,`Fecha: ${d.fecha}`,`Duración: ${d.duracion}`,`Peso: ${d.peso||'Por confirmar'}`,`Altura: ${d.altura||'Por confirmar'}`,`Maniobra: ${d.maniobra||'Sin descripción adicional'}`,'',`Nombre: ${d.nombre}`,`Teléfono: ${d.telefono}`,`Empresa: ${d.empresa||'N/A'}`,`Correo: ${d.email||'N/A'}`,`Comentarios: ${d.notas||'Sin comentarios adicionales'}`].join('\n')}
   document.querySelector('#quote-whatsapp')?.addEventListener('click',()=>{if(!ensureValid())return;const d=formData();if(!validPhone(d.telefono)){alert('Ingresa un teléfono de al menos 10 dígitos.');form.elements.telefono.focus();return}window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(quoteMessage())}`,'_blank','noopener')});
   form.addEventListener('submit',e=>{e.preventDefault();if(!ensureValid())return;const d=formData();if(!validPhone(d.telefono)){alert('Ingresa un teléfono de al menos 10 dígitos.');form.elements.telefono.focus();return}generatePdf()});
 
@@ -179,7 +203,7 @@
     pdf.setFont('helvetica','normal');pdf.setFontSize(8.5);pdf.setTextColor(71,82,93);pdf.text('Los importes se determinan después de revisar disponibilidad, capacidad, radio, accesos, duración y condiciones reales del servicio.',margin,y,{maxWidth:178});y+=12;
     amountRow('Subtotal','Por confirmar');amountRow('IVA','Por confirmar');pdf.setDrawColor(9,31,54);pdf.line(118,y-2,195,y-2);amountRow('TOTAL','Por confirmar',true);
     ensureSpace(35);y+=2;pdf.setFillColor(255,248,224);pdf.roundedRect(margin,y,180,27,2,2,'F');pdf.setTextColor(120,77,0);pdf.setFont('helvetica','bold');pdf.setFontSize(9);pdf.text('Condiciones de la solicitud',margin+4,y+6);pdf.setFont('helvetica','normal');pdf.setFontSize(8);const note=pdf.splitTextToSize('Documento generado con la información proporcionada por el cliente. No representa confirmación de disponibilidad ni precio final. La cotización económica se emite después de la revisión técnica y comercial del proyecto.',172);pdf.text(note,margin+4,y+12);y+=31;
-    const pages=pdf.getNumberOfPages();for(let p=1;p<=pages;p++){pdf.setPage(p);pdf.setDrawColor(225,228,232);pdf.line(15,283,195,283);pdf.setTextColor(90,98,108);pdf.setFont('helvetica','normal');pdf.setFontSize(7.5);pdf.text('Grúas Telescópicas · 442 179 1079 · Querétaro y Bajío',15,289);pdf.text(`Página ${p} de ${pages}`,195,289,{align:'right'})}
+    const pages=pdf.getNumberOfPages();for(let p=1;p<=pages;p++){pdf.setPage(p);pdf.setDrawColor(225,228,232);pdf.line(15,283,195,283);pdf.setTextColor(90,98,108);pdf.setFont('helvetica','normal');pdf.setFontSize(7.5);pdf.text('Grúas Telescópicas · 442 179 1079 · Oficinas Qro. · Cobertura nacional bajo disponibilidad',15,289);pdf.text(`Página ${p} de ${pages}`,195,289,{align:'right'})}
     pdf.save(`Solicitud_Cotizacion_${f}.pdf`);toast('PDF generado correctamente');
   }
   function toast(t){let el=document.querySelector('.toast');if(!el){el=document.createElement('div');el.className='toast';document.body.appendChild(el)}el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2400)}

@@ -32,4 +32,13 @@
     modal.querySelector('[data-close]').onclick=()=>modal.remove(); modal.onclick=e=>{if(e.target===modal)modal.remove()};
   }
   render();
+  // Las fichas se crean por JavaScript: resolver anclas después del renderizado.
+  function goToCatalogHash(){
+    const id=decodeURIComponent(location.hash.slice(1));
+    if(!id)return;
+    const card=document.getElementById(id);
+    if(card)requestAnimationFrame(()=>card.scrollIntoView({block:'start',behavior:'auto'}));
+  }
+  requestAnimationFrame(goToCatalogHash);
+  addEventListener('hashchange',goToCatalogHash);
 })();
